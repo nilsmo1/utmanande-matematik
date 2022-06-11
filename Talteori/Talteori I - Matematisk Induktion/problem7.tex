@@ -1,0 +1,30 @@
+\subsection*{Problem 7}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Problem 7}
+
+\paragraph{Problem:} En talföljd $a_0,\ a_1,\ a_2,\ \dotsc$ definieras för alla heltal $n\ge 0$ genom $a_0=0$ och därefter \(a_{n+1}=\frac 1{2-a_n}\), för $n\ge 0$. Gissa en explicit formel för $a_n$ och bevisa den sedan med induktion.
+
+\paragraph{Lösning:}
+
+\paragraph{Arbete mot gissning} Vi börjar med att räkna ut de första 4 talen med hjälp av att vi vet att $a_0 =0$:
+\begin{align*}
+a_1=\frac{1}{2-a_0}&=\frac{1}{2-0}=\frac{1}{2} \\[6pt]
+a_2=\frac{1}{2-a_1}&=\frac{1}{2-\frac{1}{2}}=\frac{1}{\frac{3}{2}}=\frac{2}{3} \\[6pt]
+a_3=\frac{1}{2-a_2}&=\frac{1}{2-\frac{2}{3}}=\frac{1}{\frac{4}{3}}=\frac{3}{4} \\[6pt]
+a_4=\frac{1}{2-a_3}&=\frac{1}{2-\frac{3}{4}}=\frac{1}{\frac{5}{4}}=\frac{4}{5} \\
+\end{align*}
+Från detta kan vi notera ett mönster och göra vår gissning för den explicita formeln:
+\[a_n=\frac{n}{n+1}\]
+\paragraph{Induktionsbas (IB)} $n=0$:
+\[a_{0}=\frac{0}{0+1}=\frac{0}{1}=0\]\\
+Detta stämmer överens med faktumet att $a_0=0$ från problembeskrivningen.
+
+\paragraph{Induktionsantagande (IA)} Antag att $a_k=\frac{k}{k+1}$ för $k\ge0$.
+
+\paragraph{Induktionssteg (IS)} Visa att $a_{k+1}=\frac{k+1}{k+2}$.
+Vi börjar med att kombinera den gissade formeln med den rekursivt definierade formeln från problembeskrivningen. Vi sätter sedan in värdet på $a_k$ taget från (IA):
+
+\[a_{k+1} &= \frac{1}{2-a_k} &&= \frac{1}{2-\frac{k}{k+1}} = \frac{1}{\frac{2(k+1)-k}{k+1}} = \frac{1}{\frac{k+2}{k+1}} = \frac{k+1}{k+2}\]
+\\[10pt]
+\[a_{k+1}=\frac{k+1}{k+2}\]
+\hfill\qed
+

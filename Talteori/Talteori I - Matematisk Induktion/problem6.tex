@@ -1,0 +1,21 @@
+\subsection*{Problem 6}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Problem 6}
+
+\paragraph{Problem:}  Visa att för varje $n\ge 1$ är talet $n^3+2n$ delbart med 3, dvs. $n^3+2n = 3q$ där $q \in \mathbb{N}$.
+
+\paragraph{Lösning:}
+
+\paragraph{Induktionsbas (IB)} $n=1$:
+\[VL = 1^3+2\cdot 1 = 1+2 = 3\]
+
+\paragraph{Induktionsantagande (IA)} Antag att \(k^3+2k= 3q\) där \(q \in \mathbb{N}\) och $k \ge1$.
+
+\paragraph{Induktionssteg (IS)} Visa att \((k+1)^3+2(k+1)\) är delbart med 3.\newline
+Vi expanderar termerna genom:
+\[(k+1)^3+2(k+1)=(k^3+3k^2+3k+1) + (2k+2)\]
+Från det kan vi gruppera termerna enligt följande:
+\[(3k^2+3k+3)+(k^3+2k) = 3(k^2+k+1) + (k^3+2k)\]
+Enligt induktionsantagandet är $k^3+2k$ delbart med 3 och kan skrivas som $3q$. Uttrycket kan därför skrivas som till:
+\[3(k^2+k+1) + 3q = 3(k^2+k+1+q)\]
+\[(k+1)^3+2(k+1)=\boldsymbol{3}(k^2+k+1+q) \equiv 0 \pmod{3}\]
+\hfill\qed

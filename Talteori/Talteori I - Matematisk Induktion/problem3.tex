@@ -1,0 +1,23 @@
+\subsection*{Problem 3}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Problem 3}
+
+\paragraph{Problem:} Visa att för varje $n\ge 0$ är \(1+2+2^2+\cdots+2^n=2^{n+1}-1.\)
+
+\paragraph{Lösning:}
+
+\paragraph{Induktionsbas (IB)} $n=0$:
+\begin{align*}
+VL &= 2⁰ = 1 \\[5pt]
+HL &= 2^{0+1}-1 = 2-1 = 1 \\[5pt]
+VL &= 1 = HL
+\end{align*}
+
+\paragraph{Induktionsantagande (IA)} Antag att \(1+2+2^2+\cdots+2^k=2^{k+1}-1\) för $k\ge0$.
+
+\paragraph{Induktionssteg (IS)} Visa att \(1+2+2^2+\cdots+2^k+2^{k+1}=2^{k+2}-1\)
+\newline Vi börjar med att gruppera $VL$ enligt:
+\[VL = (1+2+2^2+\cdots+2^k)+2^{k+1}\]
+Enligt (IA) kan detta skrivas om enligt:
+\[(2^{k+1}-1)+2^{k+1} = 2\cdot2^{k+1}-1 = 2^{(k+1)+1}-1 = 2^{k+2}-1\]
+\[1+2+2^2+\cdots+2^k+2^{k+1}=2^{k+2}-1\]
+\hfill\qed

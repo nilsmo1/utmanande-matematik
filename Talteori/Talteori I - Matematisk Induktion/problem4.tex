@@ -1,0 +1,39 @@
+\subsection*{Problem 4}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Problem 4}
+
+\paragraph{Problem:} Visa att för alla $n\ge 0$ är \(\sum_{i=0}^nF_i^2=F_nF_{n+1}\).
+
+\paragraph{Lösning:}\\
+$F_n$ är det n:te fibonaccitalet. Fibonaccitalen definieras som:
+\begin{equation*}
+\hspace{-75pt}
+F_n=
+    \begin{cases}
+        0 & n=0\\
+        1 &  n=1\\
+        F_{n-1}+F_{n-2} & n> 1
+    \end{cases}
+\end{equation*}
+
+\paragraph{Induktionsbas (IB)} $n=0$:
+\begin{align*}
+VL &= \sum_{i=0}^0F_i^2 = F_0^2 = 0^2 = 0 \\[5pt]
+HL &= F_{0}F_{0+1} = F_0F_1 = 0\cdot1 = 0 \\[10pt]
+VL &= 0 = HL
+\end{align*}
+
+\paragraph{Induktionsantagande (IA)} Antag att \(\sum_{i=0}^kF_i^2=F_kF_{k+1}\) för $k \ge0$.
+
+\paragraph{Induktionssteg (IS)} Visa att \(\sum_{i=0}^{k+1}F_i^2=F_{k+1}F_{k+2}\).\newline
+Vi börjar med att dela upp summan i VL enligt:
+\[\sum_{i=0}^{k+1}F_i^2 = (\sum_{i=0}^{k}F_i^2) + F_{k+1}^2\]
+Enligt (IA) gäller \(\sum_{i=0}^{k}F_i^2 = F_kF_{k+1}\) och vi kan därför göra följande omskrivning:
+\[(\sum_{i=0}^{k}F_i^2) + F_{k+1}^2 = (F_kF_{k+1})+F_{k+1}^2\]
+Om vi nu bryter ut $F_{k+1}$ ur båda termer får vi:
+\[F_{k+1}(F_k+F_{k+1})\]
+Enligt definitionen av fibonaccital från problembeskrivningen är summan av två på varandra följande fibbonacital det nästa talet i fibbonaciserien. Notera därför att $F_k+F_{k+1} = F_{k+2}$. Uttrycket kan därför skrivas om enligt:
+
+\[F_{k+1}(F_k+F_{k+1}) = F_{k+1}F_{k+2} \]
+\\[10pt]
+\[\sum_{i=0}^{k+1}F_i^2 = F_{k+1}F_{k+2}\]
+\hfill\qed

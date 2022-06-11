@@ -1,0 +1,65 @@
+\subsection*{Problem 10}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Problem 10}
+
+Fermattalen $Fe_n$ definieras som $Fe_n=2^{2^n}+1$, för alla $n\ge 0$.
+\paragraph{Delproblem 1:} Visa att $Fe_n=Fe_0Fe_1\cdots Fe_{n-1}+2$, för alla $n\ge 1$.
+
+\paragraph{Lösning:}
+\paragraph{Induktionsbas (IB)} $n=1$:
+Från definition:
+\[Fe_1 = 2^{2^1}+1 = 2^2+1 = 4+1 = 5\]
+Från beskrivning i delproblem 1:
+\[Fe_1 = Fe_0+2 = (2^{2^0}+1) + 2 = 2^1+3 = 5\]
+
+\paragraph{Induktionsantagande (IA)} Antag att \(Fe_k=Fe_0Fe_1\cdots Fe_{k-1}=2^{2^k}+1\) för $k\ge 1$.
+
+\paragraph{Induktionssteg (IS)} Visa att \(Fe_{k+1}=Fe_0Fe_1\cdots Fe_{k-1}Fe_{k}+2 = 2^{2^{k+1}}+1\).\newline\noindent
+Vi börjar med att gruppera faktorerna i produkten enligt:
+\[Fe_k=(Fe_0Fe_1\cdots Fe_{k-1})\cdot Fe_{k}+2\]
+Enligt (IA) kan vi skriva om detta som: 
+\[(Fe_0Fe_1\cdots Fe_{k-1})\cdot Fe_{k}+2 = (Fe_{k}-2)\cdot Fe_{k} + 2\]
+Vi använder nu (IA) för att skriva om likheten enligt:
+\begin{alignat*}{3}
+(Fe_k-2)\cdot Fe_k + 2 &= Fe_k^2-2Fe_k+2 \\[5pt]
+&= (2^{2^k}+1)^2-2(2^{2^k}+1)+2 \\[5pt]
+&= ((2^{2^k})^2+2\cdot 2^{2^k}+1)-2\cdot 2^{2^k} - 2 + 2 \\[5pt]
+&= (2^{2^k})^2\hspace{4pt}+1 \\[5pt]
+&= 2^{2\cdot 2^k}\hspace{10pt}+1 \\[5pt]
+&= 2^{2^{k+1}}\hspace{8pt}+1
+\end{alignat*}
+\[Fe_{k+1}=Fe_0Fe_1\cdots Fe_{k-1}Fe_{k}+2 = 2^{2^{k+1}}+1\]
+\hfill\qed
+
+\newpage\paragraph{Delproblem 2:} Använd delproblem 1 för att visa att för $i\ne j$ är\\ $SGD(Fe_i,\  Fe_j)=1$, dvs. att två olika Fermattal inte har några gemensamma delare större än 1.
+
+\paragraph{Lösning:}
+\paragraph{Test av basfall:} $i=1,\hspace{2pt} j=2$:
+\begin{alignat*}{4}
+    Fe_i &= Fe_1 &&= F_0+2 &&&= 5\\[5pt]
+    Fe_j &= Fe_2 &&= F_1+2 &&&= 7
+\end{alignat*}
+\[SGD(Fe_i,\ Fe_j) = SGD(5,\ 7) = 1\]
+
+\noindent Om vi ställer upp och jämför $Fe_i$ och $Fe_j$ får vi:
+\begin{alignat*}{4}
+    Fe_i &= Fe_0Fe_1\cdots Fe_{i-1}+2\\[5pt]
+    Fe_j &= Fe_0Fe_1\cdots Fe_{j-1}+2
+\end{alignat*}
+Låt $d=SGD(Fe_i,\ Fe_j)$. Vi antar att $i<j$. Från det kan vi konstatera att:
+\begin{alignat*}{3}
+d\mid Fe_i \implies d\mid Fe_0Fe_1\cdots \boldsymbol{Fe_i}\cdots Fe_{j-1} \iff \frac{Fe_j-2}{d}\in \mathbb{N}
+\end{alignat*}
+Från definitionen av delbarhet:
+\[(d\mid a) \wedge (d\mid b) \implies d\mid (ax+by)\]
+för $a,b,d,x,y \in \mathbb{N}$. Eftersom $d\mid Fe_j$ kan vi låta: 
+\[\systeme*{a=&Fe_j, x=&1, b=&Fe_j-2, y=&-1}\]
+Vilket leder till:
+\[d\mid Fe_j - Fe_0Fe_1\cdots Fe_i\cdots Fe_{j-1} \iff d\mid Fe_j-(Fe_j-2) \iff d\mid 2\]
+Då vi vet att definitionen av det n:te Fermattalet är $2^{2^n}+1$, för $n\ge 0$, är det 1 mer än en multipel av 2. Alla Fermattal är alltså \textbf{udda}. Detta resulterar i att $d$ inte kan vara 2. Då de enda talen som delar 2 är 2 och 1, och $d\neq 2$, kan vi konstatera att: 
+\[d=SGD(Fe_i,\ Fe_j)=1\].
+\hfill\qed
+
+\newpage\paragraph{Delproblem 3:} Dra slutsatsen att det finns oändligt många primtal.
+
+\paragraph{Lösning:} I delproblem 2 visade vi att alla Fermattal är parvis relativt prima. Det innebär att $p_n\mid Fe_n$ för $n\ge 1$ där $p_n$ inte delar något annat Fermattal än $Fe_n$.\\ Eftersom Fermattalen är en oändlig talföljd måste det finnas oändligt många distinkta primtal $p_n$ som delar Fermattalen, vilket innebär att det måste finnas oändligt många primtal i allmänhet.\\
+\hfill\qed

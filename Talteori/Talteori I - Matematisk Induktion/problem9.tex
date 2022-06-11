@@ -1,0 +1,40 @@
+\subsection*{Problem 9}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Problem 9}
+
+\paragraph{Problem:} Visa att antalet icke-tomma delmängder till en mängd med \newline$n\ge 1$ element är $2^n-1$.
+
+\paragraph{Lösning:}
+\paragraph{Induktionsbas (IB)} $n=0,\ n=1$:\\
+Låt $A=\varnothing$ och $B={b_0}$. Potensmängden $\mathbb{P}(X)$ till mängden $X$ är mängden av alla delmängder till $X$. Då vi inte vill inkludera den tomma mängden i kardinaliteten av potensmängden för $X$ definierar jag en ny mängd $\lambda(X)=|\mathbb{P}(X)|-1$. Nedan visas $\lambda(A)$ respektive $\lambda(B)$:
+\begin{alignat*}{5}
+\mathbb{P}(A) &= \ \: \mathbb{P}(\varnothing) &&= \quad \, \{\varnothing\} &&&\implies \lambda(A) = 0 = 2^0-1\\
+\mathbb{P}(B) &= \mathbb{P}(\{b_0\}) &&= \{\varnothing,\ \{b_0\}\} &&&\implies \lambda(B) = 1 = 2^1-1
+\end{alignat*}
+
+\paragraph{Induktionsantagande (IA)} Antag att $\lambda(M_k)=2^k-1$ för godtycklig mängd $M_k$ där $|M_k|=k,\ k\ge 1$. 
+
+
+\paragraph{Induktionssteg (IS)} Visa att $\lambda(M_{k+1})=2^{k+1}-1$ för en mängd $M_{k+1}$ med $k+1$ element.\\
+Ett mönster vi kan notera är att potensmängden till $M$ innehåller alla mängder med $i$ element, där $0\le i\le k+1$, av kombinationerna av elementen från $M$:
+\begin{align*}
+\mathbb{P}(M) =\ \{&\varnothing,\ \{m_0\},\ \{m_1\},\ \cdots, \ \{m_k\},\\[5pt]
+& \{m_0,\ m_1\},\ \{m_0,\ m_2\},\  \cdots,\ \{m_1,\ m_2\},\ \cdots,\\[5pt]
+& \cdots \\[5pt]
+& \{m_0,\ m_1, \cdots, \ m_{k+1}\}\}
+\end{align*}
+Vi kan notera att unionen mellan $\{m_{k+1}\}$ och alla mängder förutom den tomma mängden i mängden med $k$ element skapar lika många unika delmängder. Exempel visas nedan för mängd $M$ med 2 element:
+\begin{align*}
+    \mathbb{P}(M_k) = \{\varnothing,\ \{m_0\},\ \{m_1\},\ \{m_0,\ m_1\}\}
+\end{align*}
+Mängden med 3 element innehåller alltså $3=2^2-1$ icke-tomma delmängder. Om vi lägger till dubletter av alla delmängder som genomgår union med element $m_2$ får vi:
+\begin{gather*}
+\{\varnothing, \{m_0\}, \{m_1\}, \{m_0, m_1\}\}\cup \{\{m_2\}, \{m_0\}\cup\{m_2\}, \{m_1\}\cup\{m_2\}, \{m_0, m_1\}\cup\{m_2\}\} \\[5pt]
+=\\[5pt]
+\{\varnothing,\ \{m_0\},\ \{m_1\},\ \{m_2\},\ \{m_0,\ m_1\},\ \{m_0,\ m_2\},\ \{m_1,\ m_2\},\ \{m_0,\ m_1,\ m_2\}\}
+\end{gather*}
+Den nya mängden innehåller $7=2^3-1$ icke-tomma delmängder. Enligt (IA) har mängden $M_k$ med $k$ element $2^k-1$ icke-tomma delmängder. Om vi nu använder oss av samma metod för $M_k$ ser vi att antalet icke-tomma delmängder blir:
+\[\lambda(M_k) = 2^k-1\]
+\[   |\, \mathbb{P}(M_k)\, \cup\, \{\{x\} \cup \{m_{k+1}\} \mid x\in \mathbb{P}(M_k) \} \, | = (2^k-1)+(2^k) \]
+Det utförs alltså en union mellan potensmängden och mängden med unionen av potensmängdens med $\{m_{k+1}\}$ element. Vi får $2^k-1$ element från potensmängden och lika många, plus 1 från den andra mängden eftersom unionen mellan $\{m_{k+1}\}$ och $\varnothing$ blir $\{m_{k+1}\}$. Vi får alltså slutligen en kardinalitet på:
+\[\lambda(M_{k+1})=(2^k-1)+(2^k) = 2\cdot 2^k-1 = 2^{k+1}-1\]
+\hfill\qed

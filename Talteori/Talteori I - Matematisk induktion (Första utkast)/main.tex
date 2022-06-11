@@ -1,0 +1,159 @@
+\documentclass[12pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel} 
+\usepackage[T1]{fontenc}
+
+\usepackage{amsmath,amssymb,amsthm,graphicx,amsfonts}
+
+\begin{document}
+\input{titlepage}
+
+\section*{Del 1}
+\subsection*{Problem 1}
+\paragraph{Problem:} Var och en av $n\ge 4$ personer känner till en hemlig upplysning som inte är identisk med någon annans. Visa att det räcker med $2n-4$ telefonsamtal mellan dessa personer för att alla ska känna till alla hemligheter. Vi förutsätter att alla har tillgång till en telefon och att under varje samtal utbyts alla hemligheter som båda talande känner till.
+\paragraph{Lösning:} I detta bevis kommer hemligheterna numreras som $S_1,S_2\cdots S_n$ där $S_i$ är hemligheten som bara person $i$ vet vid initialtillståndet. Ett samtal mellan person $i$ och person $j$ kommer skrivas som $C(i,j)$. Antalet samtal som krävs för att sprida hemligheterna till $n$ personer kommer betecknas som $A(n)$. Helhetstillståndet av personernas vetskap om hemligheter kommer att representeras som mängder. Exempelvis så skulle initialfallet för $n=2$, alltså tillståndet innan något samtal har utförts, betecknas enligt följande: $T_0=\{S_1\}\{S_2\}$. Här innebär $T_n$ tillståndet efter $n$ samtal.
+\paragraph{Induktionsbas (IB)} $n=4$:
+Initialtillståndet som ges i detta fall är:
+\[T_0=\{S_1\}\{S_2\}\{S_3\}\{S_4\}\]
+Om vi nu utför föjlande serie av samtal kommer alla samtliga personer veta alla hemligheter:
+\[C(1,2) \implies T_1=\{S_1S_2\}\{S_1S_2\}\{S_3\}\{S_4\}\]
+\[C(3,4) \implies T_2=\{S_1S_2\}\{S_1S_2\}\{S_3S_4\}\{S_3S_4\}\]
+\[C(1,3) \implies T_3=\{S_1S_2S_3S_4\}\{S_1S_2\}\{S_1S_2S_3S_4\}\{S_3S_4\}\]
+\[C(2,4) \implies T_4=\{S_1S_2S_3S_4\}\{S_1S_2S_3S_4\}\{S_1S_2S_3S_4\}\{S_1S_2S_3S_4\}\]
+När alla hemligheter är spridda kan vi se att $A(4)=4=2\cdot 4-4$.
+\newpage\noindent\paragraph{Induktionsantagande (IA)} Antag att $A(k)=2k-4$ för $k\ge4$.
+
+\paragraph{Induktionssteg (IS)} Visa att $A(k+1)=2(k+1)-4$.\newline\noindent
+Först utförs samtal $C(1,k+1)$:
+\[C(1,k+1) \implies T_1=\{S_1S_{k+1}\}\{S_2\}\cdots\{S_k\}\{S_1S_{k+1}\}.\]
+Nu kan vi enligt (IA) anta att det kommer ta $2k-4$ samtal för personer 1 till $k$ att sprida sina hemligheter. Eftersom samtalet $C(1,k+1)$ gjordes innan spridningen kommer alla personer även veta hemligheten som person $k+1$ bar på i initialtillståndet. Tillståndet efter spridningen, alltså efter $2k-3$ samtal gjorts, kommer vara:
+\[T_{2k-3}=\{S_1\cdots S_{k+1}\}\{S_1\cdots S_{k+1}\}\cdots\{S_1S_{k+1}\}.\]
+Om person $k+1$ nu samtalar med vilken person som helst, till exempel person 1 för enkelhets skull, kommer tillståndet bli:
+\[C(1,k+1) \implies T_{2k-2}=\{S_1\cdots S_{k+1}\}\{S_1\cdots S_{k+1}\}\cdots\{S_1\cdots S_{k+1}\}.\]
+Eftersom ett samtal gjordes mellan person 1 och $k+1$ från början och det tog $2k-4$ samtal för att sprida hemligheterna mellan de första $k$ personerna, utgör det slutliga samtalet mellan person 1 och $k+1$ samtal nummer $2k-2$ vilket kan skrivas om enligt:
+\[2k-2 = 2k+2-4 = 2(k+1)-4 = A(k+1) \qed \]
+\newpage\noindent
+\subsection*{Problem 2}
+\paragraph{Problem:} Låt $n\ge1$. Visa att 
+\[1\cdot 2+2\cdot 3+3\cdot 4+\cdots +n(n+1)=\frac{n(n+1)(n+2)}{3}\].
+
+\paragraph{Lösning:}
+\paragraph{Induktionsbas (IB)} $n=1$:
+    \[VL = 1\cdot 2 = 2\]
+    \[HL = \frac{1(1+1)(1+2)}{3} = \frac{1 \cdot 2 \cdot 3}{3} = 2\]
+    \[VL = 2 = HL \]
+\paragraph{Induktionsantagande (IA)} Antag att 
+\[1\cdot 2+2\cdot 3+3\cdot 4+\cdots +k(k+1)=\frac{k(k+1)(k+2)}{3}\]
+för $k\ge1$.
+\paragraph{Induktionssteg (IS)} Visa att 
+\[1\cdot 2+2\cdot 3+3\cdot 4+\cdots +(k+1)(k+2)=\frac{(k+1)(k+2)(k+3)}{3}.\]
+Vi börjar med att gruppera $VL$ enligt:
+\[VL = (1\cdot 2+2\cdot 3+3\cdot 4+\cdots +k(k+1))+(k+1)(k+2).\]
+Enligt (IA) kan detta skrivas om till 
+\[VL = \frac{k(k+1)(k+2)}{3} + (k+1)(k+2)\]
+\[VL = \frac{k(k+1)(k+2) + 3(k+1)(k+2)}{3}.\]
+Vi bryter ut faktorn $(k+1)(k+2)$ från båda termerna för att få:
+\[VL = \frac{(k+1)(k+2)(k+3)}{3} = HL \qed\]
+
+\subsection*{Problem 3}
+\paragraph{Problem:} Visa att för varje $n\ge 0$ är \(1+2+2^2+\cdots+2^n=2^{n+1}-1.\)
+\paragraph{Lösning:}
+\paragraph{Induktionsbas (IB)} $n=0$:
+\[VL = 2⁰ = 1\]
+\[HL = 2^{0+1}-1 = 2-1 = 1\]
+\[VL = 1 = HL\]
+\paragraph{Induktionsantagande (IA)} Antag att \(1+2+2^2+\cdots+2^k=2^{k+1}-1\) för $k\ge0$.
+\paragraph{Induktionssteg (IS)} Visa att \(1+2+2^2+\cdots+2^k+2^{k+1}=2^{k+2}-1.\)
+\newline Vi börjar med att gruppera $VL$ enligt:
+\[VL = (1+2+2^2+\cdots+2^k)+2^{k+1}.\]
+Enligt (IA) kan detta skrivas om enligt:
+\[VL = (2^{k+1}-1)+2^{k+1} = 2\cdot2^{k+1}-1 = 2^{(k+1)+1}-1 = 2^{k+2}-1 \qed\]
+
+\newpage\noindent\subsection*{Problem 4}
+\paragraph{Problem:} Visa att för alla $n\ge 0$ är \(\sum_{i=0}^nF_i^2=F_nF_{n+1}\), där $F_n$ är det n:te fibonaccitalet. Fibonaccitalen definieras som $F_0=0, F_1=1$ och\newline $F_n=F_{n-1}+F_{n-2}$ för $n>1$.
+\paragraph{Lösning:}
+\paragraph{Induktionsbas (IB)} $n=0$:
+\[VL = \sum_{i=0}^0F_i^2 = F_0^2 = 0^2 = 0\]
+\[HL = F_{0}F_{0+1} = F_0F_1 = 0\cdot1 = 0\]
+\[VL = 0 = HL\]
+
+\paragraph{Induktionsantagande (IA)} Antag att \(\sum_{i=0}^kF_i^2=F_kF_{k+1}\) för $k \ge0$.
+
+\paragraph{Induktionssteg (IS)} Visa att \(\sum_{i=0}^{k+1}F_i^2=F_{k+1}F_{k+2}\).\newline
+Vi börjar med att dela upp summan i VL enligt:
+\[\sum_{i=0}^{k+1}F_i^2 = (\sum_{i=0}^{k}F_i^2) + F_{k+1}^2.\]
+Enligt (IA) gäller \(\sum_{i=0}^{k}F_i^2 = F_kF_{k+1}\) och vi kan därför göra följande omskrivning:
+\[(\sum_{i=0}^{k}F_i^2) + F_{k+1}^2 = (F_kF_{k+1})+F_{k+1}^2.\]
+Om vi nu bryter ut $F_{k+1}$ ur båda termer får vi:
+\[F_{k+1}(F_k+F_{k+1}).\]
+Enligt definitionen av fibonaccital från problembeskrivningen är summan av två på varandra följande fibbonacital det nästa talet i fibbonaciserien. Notera därför att $F_k+F_{k+1} = F_{k+2}$. Uttrycket kan därför skrivas om enligt:
+\[F_{k+1}(F_k+F_{k+1}) = F_{k+1}F_{k+2} \qed\]
+Induktionssteget är därmed genomfört och beviset avklarat.
+
+\newpage \noindent
+\subsection*{Problem 5}
+\paragraph{Problem:} Talföljden $a_0, a_1, a_2,\dotsc$ definieras rekursivt genom: \newline \(a_0=7, a_1 =5\) och \(a_{n+1} = 2a_n + 3a_{n-1}\) för $n\ge 1$. Du misstänker att det finns två konstanter $A$ och $B$ sådana att $a_n =A\cdot 3^n + B\cdot (-1)^n$ för alla $n\ge 0$. Verifiera misstanken (finn möjliga $A$ och $B$) och bevisa ditt påstående med induktion.
+\paragraph{Lösning:}
+
+\newpage 
+
+\section*{Del 2}
+
+\subsection*{Problem 6}
+\paragraph{Problem:} Visa att för varje $n\ge 1$ är talet $n^3+2n$ delbart med 3, dvs. $n^3+2n = 3q$ där $q \in \mathbb{N}$.
+\paragraph{Lösning:}
+\paragraph{Induktionsbas (IB)} $n=1$:
+\[VL = 1^3+2\cdot 1 = 1+2 = 3\]
+\paragraph{Induktionsantagande (IA)} Antag att \(k^3+2k= 3q\) där \(q \in \mathbb{N}\) och $k \ge1$.
+\paragraph{Induktionssteg (IS)} Visa att \((k+1)^3+2(k+1)\) är delbart med 3.\newline
+Vi expanderar termerna genom:
+\[(k+1)^3+2(k+1)=(k^3+3k^2+3k+1) + (2k+2).\]
+Från det kan vi gruppera termerna enligt följande:
+\[(3k^2+3k+3)+(k^3+2k) = 3(k^2+k+1) + (k^3+2k).\]
+Enligt induktionsantagandet är $k^3+2k$ delbart med 3 och kan skrivas som $3q$. Uttrycket kan därför skrivas som till:
+\[3(k^2+k+1) + 3q = \boldsymbol{3}(k^2+k+1+q) \equiv_3 0 \qed\]
+
+
+\newpage\noindent\subsection*{Problem 7}
+\paragraph{Problem:} En talföljd $a_0, a_1, a_2, \dotsc$ definieras för alla heltal $n\ge 0$ genom $a_0=0$ och därefter \(a_{n+1}=\frac 1{2-a_n}\), för $n\ge 0$. Gissa en explicit formel för $a_n$ och bevisa den sedan med induktion.
+\paragraph{Lösning:}
+
+
+\newpage\noindent\subsection*{Problem 8}
+\paragraph{Problem:} Använd induktion för att visa att för alla $n\ge 1$ är talet $2^{2n}-1$ delbart med 3.
+\paragraph{Lösning:}
+\paragraph{Induktionsbas (IB)} $n=1$:
+\[2^{2\cdot1}-1 = 2^2-1 = 4-1 = 3\]
+vilket givetvis är delbart med 3.
+\paragraph{Induktionsantagande (IA)} Antag att $2^{2k}-1$ är delbart med 3, dvs. $2^{2k}-1 = 3q$ där $q \in \mathbb{N}$ för $k\ge1.$ 
+
+\paragraph{Induktionssteg (IS)} Visa att $2^{2(k+1)}-1$ är delbart med 3.\newline
+Uttrycket kan expanderas till
+\[2^{2k+2}-1 = 2^2\cdot2^{2k} = 4\cdot2^{k}-1.\]
+Vi kan sedan gruppera termerna enligt:
+\[4\cdot2^{2k}-1 = 3\cdot2^{2k} + 2^{2k}-1.\]
+Enligt (IA) är $2^{2k}-1$ delbart med 3 och kan skrivas om till $3q$. Därför kan uttrycket skrivas om till:
+\[3\cdot2^{2k} + 2^{2k}-1 = 3\cdot2^{2k} + 3q = \boldsymbol{3}(2^{2k}+q) \equiv_3 0 \qed\]
+
+\newpage\noindent\subsection*{Problem 9}
+\paragraph{Problem:} Visa att antalet icke-tomma delmängder till en mängd med \newline$n\ge 1$ element är $2^n-1$.
+\paragraph{Lösning:}
+
+
+\newpage\noindent\subsection*{Problem 10}
+Fermattalen $Fe_n$ definieras som $Fe_n=2^{2^n}+1$, för alla $n\ge 0$.
+\paragraph{Problem 1:} Visa att $Fe_n=Fe_0Fe_1\cdots Fe_{n-1}+2$, för alla $n\ge 1$.
+
+\paragraph{Lösning:}
+
+
+\paragraph{Problem 2:} Använd $(1)$ för att visa att för $i\ne j$ är $SGD(Fe_i, Fe_j)=1$, dvs. att två olika Fermattal inte har några gemensamma delare större än 1.
+
+\paragraph{Lösning:}
+
+
+\paragraph{Problem 3:} Dra slutsatsen att det finns oändligt många primtal.
+
+\paragraph{Lösning:}
+\end{document}

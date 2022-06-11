@@ -1,0 +1,34 @@
+\subsection*{Problem 1}
+\addcontentsline{toc}{subsection}{\protect\numberline{}Problem 1}
+
+\paragraph{Problem:} Var och en av $n\ge 4$ personer känner till en hemlig upplysning som inte är identisk med någon annans. Visa att det räcker med $2n-4$ telefonsamtal mellan dessa personer för att alla ska känna till alla hemligheter. Vi förutsätter att alla har tillgång till en telefon och att under varje samtal utbyts alla hemligheter som båda talande känner till.
+
+\paragraph{Lösning:} I detta bevis kommer hemligheterna numreras som $S_1,\ S_2, \ \cdots ,\ S_n$ där $S_i$ är hemligheten som bara person $i$ vet vid initialtillståndet. Ett samtal mellan person $i$ och person $j$ kommer skrivas som $C(i,j)$. Antalet samtal som krävs för att sprida hemligheterna till $n$ personer kommer betecknas som $A(n)$. Helhetstillståndet av personernas vetskap om hemligheter kommer att representeras som mängder. Exempelvis så skulle initialfallet för $n=2$, alltså tillståndet innan något samtal har utförts, betecknas enligt följande: $T_0=\{S_1\}\{S_2\}$. Här beskriver $T_n$ tillståndet efter $n$ samtal. Om en person till exempel vet hemligheter $S_1$ och $S_5$ betecknas personen som $\{S_1S_5\}$.
+
+\paragraph{Induktionsbas (IB)} $n=4$:
+Initialtillståndet som ges i detta fall är:
+\[T_0=\{S_1\}\{S_2\}\{S_3\}\{S_4\}\]
+Om vi nu utför föjlande serie av samtal kommer alla samtliga personer veta alla hemligheter:
+\begin{align*}
+C(1,2) &\implies T_1=\{S_1S_2\}\{S_1S_2\}\{S_3\}\{S_4\} \\[5pt]
+C(3,4) &\implies T_2=\{S_1S_2\}\{S_1S_2\}\{S_3S_4\}\{S_3S_4\} \\[5pt]
+C(1,3) &\implies T_3=\{S_1S_2S_3S_4\}\{S_1S_2\}\{S_1S_2S_3S_4\}\{S_3S_4\} \\[5pt]
+C(2,4) &\implies T_4=\{S_1S_2S_3S_4\}\{S_1S_2S_3S_4\}\{S_1S_2S_3S_4\}\{S_1S_2S_3S_4\}
+\end{align*}
+När alla hemligheter är spridda kan vi se att $A(4)=4=2\cdot 4-4$.
+
+\paragraph{Induktionsantagande (IA)} Antag att $A(k)=2k-4$ för $k\ge4$.
+
+\newpage\paragraph{Induktionssteg (IS)} Visa att $A(k+1)=2(k+1)-4$.\newline\noindent
+Först utförs samtal $C(1,k+1)$:
+\[C(1,k+1) \implies T_1=\{S_1S_{k+1}\}\{S_2\}\cdots\{S_k\}\{S_1S_{k+1}\}\]
+Nu kan vi enligt (IA) anta att det kommer ta $2k-4$ samtal för personer 1 till $k$ att sprida sina hemligheter. Eftersom samtalet $C(1,k+1)$ gjordes innan spridningen kommer alla personer även veta hemligheten som person $k+1$ bar på i initialtillståndet. Tillståndet efter spridningen, alltså efter $2k-3$ samtal gjorts, kommer vara:
+\[T_{2k-3}=\{S_1\cdots S_{k+1}\}\{S_1\cdots S_{k+1}\}\cdots\{S_1S_{k+1}\}\]
+Om person $k+1$ nu samtalar med vilken person som helst, till exempel person 1 för enkelhets skull, kommer tillståndet bli:
+\[C(1,k+1) \implies T_{2k-2}=\{S_1\cdots S_{k+1}\}\{S_1\cdots S_{k+1}\}\cdots\{S_1\cdots S_{k+1}\}\]
+Eftersom ett samtal gjordes mellan person 1 och $k+1$ från början och det tog $2k-4$ samtal för att sprida hemligheterna mellan de första $k$ personerna, utgör det slutliga samtalet mellan person 1 och $k+1$ samtal nummer $2k-2$ vilket kan skrivas om enligt:
+
+\[2k-2 = 2k+2-4 = 2(k+1)-4\]
+
+\[A(k+1) = 2(k+1)-4\]
+\hfill\qed
